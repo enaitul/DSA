@@ -1,29 +1,31 @@
 class Solution {
 public:
-    set<vector<int>> ans;
+    vector<vector<int>> ans;
+    vector<int> path;
 
-    void solve(int index, vector<int> curr, vector<int>& nums){
-        if (index == nums.size()){
-            ans.insert(curr);
-            return;
+    void solve(int start, vector<int>& nums) {
+
+        ans.push_back(path);
+
+        for (int i = start; i < nums.size(); i++) {
+
+            if (i > start && nums[i] == nums[i - 1])
+                continue;
+
+            path.push_back(nums[i]);
+
+            solve(i + 1, nums);
+
+            path.pop_back();
         }
-
-        curr.push_back(nums[index]);
-        solve(index + 1, curr, nums);
-
-        curr.pop_back();
-
-        solve(index + 1, curr, nums);
     }
 
     vector<vector<int>> subsetsWithDup(vector<int>& nums) {
 
         sort(nums.begin(), nums.end());
 
-        vector<int> curr;
+        solve(0, nums);
 
-        solve(0, curr, nums);
-
-        return vector<vector<int>>(ans.begin(), ans.end());
+        return ans;
     }
 };
