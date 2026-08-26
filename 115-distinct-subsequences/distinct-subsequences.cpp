@@ -13,7 +13,7 @@ public:
     int numDistinct(string s, string t) {
         int m = s.size();
         int n = t.size();
-        vector<vector<int>>dp(m+1, vector<int>(n+1, -1));
-        return solve (m, n, dp, s, t);
+        vector<vector<int>>dp(m, vector<int>(n, -1));
+        return solve (m-1, n-1, dp, s, t);
     }
 };
