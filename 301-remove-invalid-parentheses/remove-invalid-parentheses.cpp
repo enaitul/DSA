@@ -22,7 +22,7 @@ private:
             return;
         }
 
-        if (s[i] != '(' && s[i] != ')') {                     // letter: always keep
+        if (s[i] != '(' && s[i] != ')') {                    
             curr.push_back(s[i]);
             solve(s, i + 1, curr, count, maxLen);
             curr.pop_back();
