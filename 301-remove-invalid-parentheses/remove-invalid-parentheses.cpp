@@ -9,7 +9,7 @@ private:
 
         if (i == n) {
             if (count == 0) {
-                if (curr.length() > maxLen) {        // found a longer valid string
+                if (curr.length() > maxLen) {        
                     maxLen = curr.length();
                     st.clear();
                 }
